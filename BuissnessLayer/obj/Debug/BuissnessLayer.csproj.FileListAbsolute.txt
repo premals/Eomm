@@ -16,3 +16,6 @@ F:\Desai\BuissnessLayer\obj\Debug\BuissnessLayer.csprojResolveAssemblyReference.
 F:\Desai\BuissnessLayer\obj\Debug\BuissnessLayer.dll
 F:\Desai\BuissnessLayer\obj\Debug\BuissnessLayer.pdb
 F:\Desai\BuissnessLayer\bin\Debug\Dapper.dll
+H:\Ecomerce\BuissnessLayer\bin\Debug\Dapper.dll
+H:\Ecomerce\BuissnessLayer\bin\Debug\DataLayer.pdb
+H:\Ecomerce\BuissnessLayer\bin\Debug\Dapper.xml

@@ -1,0 +1,44 @@
+﻿USE [DesaiEcom]
+GO
+/****** Object:  StoredProcedure [dbo].[CheckLogin]    Script Date: 11/13/2016 12:37:26 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- Batch submitted through debugger: SQLQuery1.sql|64|0|C:\Users\Premal\AppData\Local\Temp\~vsD078.sql
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+Alter PROCEDURE [dbo].[Brand_Sp] 
+	-- Add the parameters for the stored procedure here
+	@BrandId bigint,
+	@Name  nvarchar(100),
+	@IsDeleted bit,
+	@CreatedBy int,
+	@CreatedDate datetime,
+	@LastModifiedDate datetime,
+	@ReturnId bigint out
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	if @BrandId = 0 
+	Begin
+	Insert into
+			Brands(Name,IsDeleted,CreatedBy,CreatedDate,LastModifiedBy,LasModifiedDate)values(@Name,'0',@CreatedBy,GETDATE(),null,null);
+			
+set @ReturnId=@@identity
+End
+			if @BrandId > 0
+			begin
+			update Brands set IsDeleted=@IsDeleted where Id=@BrandId
+			end
+
+    -- Insert statements for procedure here
+	
+
+END
+

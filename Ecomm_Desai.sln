@@ -1,28 +1,28 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ecom_Desai", "Ecom_Desai\", "{37EC18F7-B081-431B-A09A-53F1F3E99D0C}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		ProjectReferences = "{8e2080c5-d7a1-406f-94d8-77cf0c050f22}|BuissnessLayer.dll;{b9f0ade8-eb00-42ef-ac9e-e720c1be6475}|DataLayer.dll;{e09b7a04-7150-4ef6-aab8-1d56653e16a7}|Entity.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_1986"
-		Debug.AspNetCompiler.PhysicalPath = "H:\Ecomerce\Ecom_Desai\"
+		Debug.AspNetCompiler.PhysicalPath = "Ecom_Desai\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1986\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_1986"
-		Release.AspNetCompiler.PhysicalPath = "H:\Ecomerce\Ecom_Desai\"
+		Release.AspNetCompiler.PhysicalPath = "Ecom_Desai\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_1986\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "1986"
-		SlnRelativePath = "H:\Ecomerce\Ecom_Desai\"
+		SlnRelativePath = "Ecom_Desai\"
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
