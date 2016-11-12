@@ -1,0 +1,8 @@
+H:\Ecomerce\BuissnessLayer\bin\Debug\BuissnessLayer.dll
+H:\Ecomerce\BuissnessLayer\bin\Debug\BuissnessLayer.pdb
+H:\Ecomerce\BuissnessLayer\bin\Debug\DataLayer.dll
+H:\Ecomerce\BuissnessLayer\bin\Debug\Entity.dll
+H:\Ecomerce\BuissnessLayer\bin\Debug\Entity.pdb
+H:\Ecomerce\BuissnessLayer\obj\Debug\BuissnessLayer.csprojResolveAssemblyReference.cache
+H:\Ecomerce\BuissnessLayer\obj\Debug\BuissnessLayer.dll
+H:\Ecomerce\BuissnessLayer\obj\Debug\BuissnessLayer.pdb

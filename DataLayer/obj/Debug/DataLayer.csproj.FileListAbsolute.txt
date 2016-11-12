@@ -1,0 +1,14 @@
+H:\Ecomerce\DataLayer\bin\Debug\DataLayer.dll
+H:\Ecomerce\DataLayer\bin\Debug\DataLayer.pdb
+H:\Ecomerce\DataLayer\bin\Debug\Dapper.dll
+H:\Ecomerce\DataLayer\bin\Debug\Dapper.SimpleCRUD.dll
+H:\Ecomerce\DataLayer\bin\Debug\Entity.dll
+H:\Ecomerce\DataLayer\bin\Debug\MicroOrm.Dapper.Repositories.dll
+H:\Ecomerce\DataLayer\bin\Debug\Entity.pdb
+H:\Ecomerce\DataLayer\bin\Debug\Dapper.xml
+H:\Ecomerce\DataLayer\bin\Debug\Dapper.SimpleCRUD.pdb
+H:\Ecomerce\DataLayer\bin\Debug\Dapper.SimpleCRUD.xml
+H:\Ecomerce\DataLayer\bin\Debug\MicroOrm.Dapper.Repositories.xml
+H:\Ecomerce\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+H:\Ecomerce\DataLayer\obj\Debug\DataLayer.dll
+H:\Ecomerce\DataLayer\obj\Debug\DataLayer.pdb
