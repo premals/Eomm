@@ -12,3 +12,10 @@ H:\Ecomerce\DataLayer\bin\Debug\MicroOrm.Dapper.Repositories.xml
 H:\Ecomerce\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
 H:\Ecomerce\DataLayer\obj\Debug\DataLayer.dll
 H:\Ecomerce\DataLayer\obj\Debug\DataLayer.pdb
+F:\Desai\DataLayer\bin\Debug\DataLayer.dll
+F:\Desai\DataLayer\bin\Debug\DataLayer.pdb
+F:\Desai\DataLayer\bin\Debug\Entity.dll
+F:\Desai\DataLayer\bin\Debug\Entity.pdb
+F:\Desai\DataLayer\obj\Debug\DataLayer.csprojResolveAssemblyReference.cache
+F:\Desai\DataLayer\obj\Debug\DataLayer.dll
+F:\Desai\DataLayer\obj\Debug\DataLayer.pdb

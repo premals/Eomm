@@ -6,3 +6,13 @@ H:\Ecomerce\BuissnessLayer\bin\Debug\Entity.pdb
 H:\Ecomerce\BuissnessLayer\obj\Debug\BuissnessLayer.csprojResolveAssemblyReference.cache
 H:\Ecomerce\BuissnessLayer\obj\Debug\BuissnessLayer.dll
 H:\Ecomerce\BuissnessLayer\obj\Debug\BuissnessLayer.pdb
+F:\Desai\BuissnessLayer\bin\Debug\BuissnessLayer.dll
+F:\Desai\BuissnessLayer\bin\Debug\BuissnessLayer.pdb
+F:\Desai\BuissnessLayer\bin\Debug\DataLayer.dll
+F:\Desai\BuissnessLayer\bin\Debug\Entity.dll
+F:\Desai\BuissnessLayer\bin\Debug\DataLayer.pdb
+F:\Desai\BuissnessLayer\bin\Debug\Entity.pdb
+F:\Desai\BuissnessLayer\obj\Debug\BuissnessLayer.csprojResolveAssemblyReference.cache
+F:\Desai\BuissnessLayer\obj\Debug\BuissnessLayer.dll
+F:\Desai\BuissnessLayer\obj\Debug\BuissnessLayer.pdb
+F:\Desai\BuissnessLayer\bin\Debug\Dapper.dll

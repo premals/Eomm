@@ -3,3 +3,8 @@ H:\Ecomerce\Entity\bin\Debug\Entity.pdb
 H:\Ecomerce\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 H:\Ecomerce\Entity\obj\Debug\Entity.dll
 H:\Ecomerce\Entity\obj\Debug\Entity.pdb
+F:\Desai\Entity\bin\Debug\Entity.dll
+F:\Desai\Entity\bin\Debug\Entity.pdb
+F:\Desai\Entity\obj\Debug\Entity.dll
+F:\Desai\Entity\obj\Debug\Entity.pdb
+F:\Desai\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache

@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     
-    <title>Login  | Xqfotos</title>
+    <title>Login  | Desai & Company</title>
 
     <!-- Favicons-->
     <link rel="icon" href="Admin/images/favicon/favicon-32x32.png" sizes="32x32">
@@ -58,7 +58,7 @@
         function OnSuccess(data) {
             var result = data.d[0];
             if (result == "1") {
-                window.location.href = "Admin/DisplayCategory.aspx"
+                window.location.href = "Admin/Dashboard.aspx"
             }
             else {
                 $("#msg").text("");
