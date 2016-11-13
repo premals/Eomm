@@ -7,11 +7,36 @@
         <table id="brandtable" style="padding-left: 300px;">
         </table>
     </div>
-    <script src="js/jquery-1.11.1.min.js"></script>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" id="brandmodalbutton" style="visibility: hidden" data-target="#myModal">Open Modal</button>
+    <div class="modal fade" id="BrandModal" role="dialog">
+        <!-- Modal content-->
+        <%--<div class="modal-content">--%>
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row margin">
+               <%-- <label class="col-md-4">Name</label>--%>
+                <input type="text" class="input-field col s12" id="Name" />
+            </div>
+            <input type="button" value="Save" />
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        <%-- </div>--%>
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <%-- <script src="js/jquery-1.11.1.min.js"></script>--%>
     <script>
         var GlobalPath = "<%= Application["path"] %>";
         $(document).ready(function () {
             debugger;
+            $("#brandtable").empty();
             GetAllBrands();
         });
         function GetAllBrands() {
@@ -38,11 +63,17 @@
             if (data.d.length > 0) {
                 $("#brandtable").append("<thead><tr><td>Name</td><td>Edit</td><td>Delete</td></tr></thead>");
                 (data.d).forEach(function (i) {
-                    $("#brandtable").append("<tbody><tr><td id='brand_'" + i.Id + ">" + i.Name + "</td><td><img src='images/Edit.png' onclick='EditBrand(this)' /></td><td><img src='images/Delete.png' onclick='DeleteBrand(this)'/></td></tr></tbody>");
+                    $("#brandtable").append("<tbody><tr><td>" + i.Name + "</td><td><img src='images/Edit.png' id='brand_" + i.Id + "' onclick='EditBrand(this)' /></td><td><img src='images/Delete.png' onclick='DeleteBrand(this)'/></td></tr></tbody>");
                 });
+            }
+            else {
+                $("#brandtable").append("<tr><td>No record found.</td></tr>");
             }
         }
         function EditBrand(e) {
+
+            var ids = (e.id).split('_');
+            var brandid = ids[1];
             var xmlRequest = [];
             xmlRequest.push($.ajax(
                   {
@@ -50,7 +81,7 @@
                       url: GlobalPath + "Brands.asmx/GetById",
                       contentType: "application/json; charset=utf-8",
                       dataType: "json",
-                      data:{id : e.Id},
+                      data: JSON.stringify({ id: brandid }),
                       async: true,
                       cache: false,
                       success: onsuccessEdit,
@@ -62,14 +93,27 @@
         }
         function onsuccessEdit(data) {
             debugger;
-            alert(data.d.length + "" + data.d[0].Name);
-            if (data.d.length > 0) {
-                window.location.href = "Admin/Dashboard.aspx"
+            alert(data.d.Name);
+            if (data.d.Name != null) {
+                $("#Name").val(data.d.Name);
+                //var opt = {
+                //    autoOpen: false,
+                //    modal: true,
+                //    width: 550,
+                //    height: 650,
+                //    title: 'Details'
+                //};
+                //$("#BrandModal").dialog(opt).dialog("open");
+                $('#BrandModal').modal('show');
+                //$("#brandmodalbutton").click(function () {
+                // $("#BrandModal").dialog('open');
+                //    return false;
+                //});
             }
         }
-        function DeleteBrand(e) {
+        //function DeleteBrand(e) {
 
-        }
+        //}
     </script>
 </asp:Content>
 

@@ -41,10 +41,11 @@ public class Brands : System.Web.Services.WebService
 
     #region GetById
     [WebMethod]
-    public BrandOL GetById(int id)
+    public BrandOL GetById(string id)
     {
+        int Id = Convert.ToInt32(id);
         BrandOL objbrand = new BrandOL();
-        objbrand = new BrandBL().GetById(id);
+        objbrand = new BrandBL().GetById(Id);
         return objbrand;
     }
     #endregion
