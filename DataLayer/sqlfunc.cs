@@ -8,9 +8,6 @@ using System.Data.SqlClient;
 
 public class sqlfunc : IDisposable
 {
-
-    
-
     //Public strConn As String = System.Configuration.ConfigurationSettings.AppSettings("connectionString")
     public string strConn = dbConnectionString;
     SqlConnection oConn;
@@ -29,8 +26,6 @@ public class sqlfunc : IDisposable
         cmd.CommandType = CommandType.StoredProcedure;
            
     }
-
-
 
     public void cmdReset()
     {

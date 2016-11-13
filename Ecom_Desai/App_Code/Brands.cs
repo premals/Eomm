@@ -12,20 +12,24 @@ using BuissnessLayer;
 [WebService(Namespace = "http://tempuri.org/")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-// [System.Web.Script.Services.ScriptService]
-public class Brands : System.Web.Services.WebService {
+[System.Web.Script.Services.ScriptService]
+public class Brands : System.Web.Services.WebService
+{
 
-    public Brands () {
+    public Brands()
+    {
 
         //Uncomment the following line if using designed components 
         //InitializeComponent(); 
     }
 
     [WebMethod]
-    public string HelloWorld() {
+    public string HelloWorld()
+    {
         return "Hello World";
     }
 
+    #region GetAllBrands
     [WebMethod]
     public List<BrandOL> GetAllBrands()
     {
@@ -33,5 +37,16 @@ public class Brands : System.Web.Services.WebService {
         objbrand = new BrandBL().GetAllBrands();
         return objbrand;
     }
-    
+    #endregion
+
+    #region GetById
+    [WebMethod]
+    public BrandOL GetById(int id)
+    {
+        BrandOL objbrand = new BrandOL();
+        objbrand = new BrandBL().GetById(id);
+        return objbrand;
+    }
+    #endregion
+
 }
