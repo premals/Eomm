@@ -5,13 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
    
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="msapplication-tap-highlight" content="no"/>
-    <meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google. "/>
-    <meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template,"/>
-    <title>xq-fotos</title>
+    
+    <title>Desai</title>
 
     
     <!-- For iPhone -->
@@ -175,18 +170,18 @@
       
         
     <!--materialize js-->
-     
+     <%--<script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>--%>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <!--scrollbar-->
     <script type="text/javascript" src="js/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     
        
     <!-- chartist -->
-    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
+    <%--<script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script> --%>  
 
     <!-- chartjs -->
-    <script type="text/javascript" src="js/plugins/chartjs/chart.min.js"></script>
-    <script type="text/javascript" src="js/plugins/chartjs/chart-script.js"></script>
+    <%--<script type="text/javascript" src="js/plugins/chartjs/chart.min.js"></script>
+    <script type="text/javascript" src="js/plugins/chartjs/chart-script.js"></script>--%>
 
     <!-- sparkline -->
     <script type="text/javascript" src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
@@ -204,7 +199,7 @@
                 <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
          <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
     <!--materialize js-->
-          <script type="text/javascript" src="js/plugins.min.js"></script>
+         <%-- <script type="text/javascript" src="js/plugins.min.js"></script>--%>
     <script type="text/javascript" src="js/materialize.min.js"></script>
   
     <!--prism-->
