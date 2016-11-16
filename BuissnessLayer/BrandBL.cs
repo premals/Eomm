@@ -27,5 +27,21 @@ namespace BuissnessLayer
             return objbrand;
         }
         #endregion
+
+        #region Edit
+        public int Edit(int id,string name)
+        {
+            int rowsAffected = new BrandDL().Edit(id, name);
+            return rowsAffected;
+        }
+        #endregion
+
+        #region Delete
+        public int Delete(int id)
+        {
+            int rowsAffected = new BrandDL().Delete(id);
+            return rowsAffected;
+        }
+        #endregion
     }
 }
