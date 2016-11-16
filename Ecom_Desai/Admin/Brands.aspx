@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="col-md-12">
-        <table id="brandtable" style="padding-left: 300px;">
+        <table id="brandtable" style="margin-left: 130px; margin-top: 20px;">
         </table>
     </div>
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" id="brandmodalbutton" style="visibility: hidden" data-target="#myModal">Open Modal</button>
@@ -17,11 +17,10 @@
         </div>
         <div class="modal-body">
             <div class="row margin">
-               <%-- <label class="col-md-4">Name</label>--%>
+                <input type="hidden" id="Id" />
                 <input type="text" class="input-field col s12" id="Name" />
             </div>
-            <input type="button" value="Save" />
-
+            <input type="button" value="Save" id="save" />
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -35,12 +34,10 @@
     <script>
         var GlobalPath = "<%= Application["path"] %>";
         $(document).ready(function () {
-            debugger;
             $("#brandtable").empty();
             GetAllBrands();
         });
         function GetAllBrands() {
-
             var xmlRequest = [];
             xmlRequest.push($.ajax(
                   {
@@ -58,12 +55,13 @@
                   }));
         }
         function onsuccess(data) {
-            debugger;
-            alert(data.d.length + "" + data.d[0].Name);
+            //debugger;
+            // alert(data.d.length + "" + data.d[0].Name);
+            $("#brandtable").empty();
             if (data.d.length > 0) {
                 $("#brandtable").append("<thead><tr><td>Name</td><td>Edit</td><td>Delete</td></tr></thead>");
                 (data.d).forEach(function (i) {
-                    $("#brandtable").append("<tbody><tr><td>" + i.Name + "</td><td><img src='images/Edit.png' id='brand_" + i.Id + "' onclick='EditBrand(this)' /></td><td><img src='images/Delete.png' onclick='DeleteBrand(this)'/></td></tr></tbody>");
+                    $("#brandtable").append("<tbody><tr><td>" + i.Name + "</td><td><img src='images/Edit.png' id='brand_" + i.Id + "' onclick='EditBrand(this)' /></td><td><img src='images/Delete.png' onclick='DeleteBrand(" + i.Id + ")'/></td></tr></tbody>");
                 });
             }
             else {
@@ -71,7 +69,6 @@
             }
         }
         function EditBrand(e) {
-
             var ids = (e.id).split('_');
             var brandid = ids[1];
             var xmlRequest = [];
@@ -92,28 +89,61 @@
                   }));
         }
         function onsuccessEdit(data) {
-            debugger;
-            alert(data.d.Name);
+            // debugger;
+            // alert(data.d.Name);
             if (data.d.Name != null) {
                 $("#Name").val(data.d.Name);
-                //var opt = {
-                //    autoOpen: false,
-                //    modal: true,
-                //    width: 550,
-                //    height: 650,
-                //    title: 'Details'
-                //};
-                //$("#BrandModal").dialog(opt).dialog("open");
+                $("#Id").val(data.d.Id);
                 $('#BrandModal').modal('show');
-                //$("#brandmodalbutton").click(function () {
-                // $("#BrandModal").dialog('open');
-                //    return false;
-                //});
             }
         }
-        //function DeleteBrand(e) {
-
-        //}
+        $("#save").click(function () {
+            var name = $("#Name").val();
+            var id = $("#Id").val();
+            var xmlRequest = [];
+            xmlRequest.push($.ajax(
+                 {
+                     type: "POST",
+                     url: GlobalPath + "Brands.asmx/Edit",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     data: JSON.stringify({ Name: name, Id: id }),
+                     async: true,
+                     cache: false,
+                     success: onsuccessSave,
+                     error: function (xhr, ajaxOptions, thrownError) {
+                         //alert(xhr.responseText + "error");
+                         //alert(thrownError);
+                     }
+                 }));
+        })
+        function onsuccessSave(data) {
+            $('#BrandModal').modal('hide');
+            GetAllBrands();
+        }
+        function DeleteBrand(e) {
+            var brandid = e;
+            var xmlRequest = [];
+            xmlRequest.push($.ajax(
+                {
+                    type: "POST",
+                    url: GlobalPath + "Brands.asmx/Delete",
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify({ Id: brandid }),
+                    async: true,
+                    cache: false,
+                    success: onsuccessDelete,
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        //alert(xhr.responseText + "error");
+                        //alert(thrownError);
+                    }
+                }));
+        }
+        function onsuccessDelete(data) {
+            $('#BrandModal').modal('hide');
+            GetAllBrands();
+        }
     </script>
 </asp:Content>
 

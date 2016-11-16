@@ -50,4 +50,24 @@ public class Brands : System.Web.Services.WebService
     }
     #endregion
 
+    #region Edit
+    [WebMethod]
+    public int Edit(string Name,string Id)
+    {
+        int id = Convert.ToInt32(Id);
+        int rowAffect = new BrandBL().Edit(id, Name);
+        return rowAffect;
+    }
+    #endregion
+
+    #region Delete
+    [WebMethod]
+    public int Delete(string Id)
+    {
+        int id = Convert.ToInt32(Id);
+        int rowAffect = new BrandBL().Delete(id);
+        return rowAffect;
+    }
+    #endregion
+
 }

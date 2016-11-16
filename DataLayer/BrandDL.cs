@@ -12,10 +12,12 @@ namespace DataLayer
 {
     public class BrandDL
     {
+        string dbConnection = @"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123";
+
         #region GetAllBrands
         public List<BrandOL> GetAllBrands()
         {
-            using (IDbConnection db = new SqlConnection(@"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123"))
+            using (IDbConnection db = new SqlConnection(dbConnection))
             {
                 return db.Query<BrandOL>
                 ("Select * From Brands Where IsDeleted=0").ToList();
@@ -26,9 +28,42 @@ namespace DataLayer
         #region GetById
         public BrandOL GetById(int id)
         {
-            using (IDbConnection db = new SqlConnection(@"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123"))
+            using (IDbConnection db = new SqlConnection(dbConnection))
             {
                 return db.Query<BrandOL>("Select * From Brands WHERE Id = @Id", new { id }).SingleOrDefault();
+            }
+        }
+        #endregion
+
+        #region Edit
+        public int Edit(int id,string name)
+        {
+            BrandOL brandol = new BrandOL();
+            brandol.Name = name;
+            brandol.Id = id;
+            brandol.ModifiedBy = 1;
+            brandol.ModifiedDate = DateTime.UtcNow.AddHours(5.5);
+            using (IDbConnection db = new SqlConnection(dbConnection))
+            {
+                string sqlQuery = "UPDATE Brands SET Name = '"+name+ "' LastModifiedBy=1 WHERE Id = " + id;
+                int rowsAffected = db.Execute(sqlQuery, brandol);
+                return rowsAffected;
+            }
+        }
+        #endregion
+
+        #region Delete
+        public int Delete(int id)
+        {
+            BrandOL brandol = new BrandOL();
+            brandol.Id = id;
+            brandol.ModifiedBy = 1;
+            brandol.ModifiedDate = DateTime.UtcNow.AddHours(5.5);
+            using (IDbConnection db = new SqlConnection(dbConnection))
+            {
+                string sqlQuery = "UPDATE Brands SET IsDeleted = 1 , LastModifiedBy=1 WHERE Id = " + id;
+                int rowsAffected = db.Execute(sqlQuery, brandol);
+                return rowsAffected;
             }
         }
         #endregion
