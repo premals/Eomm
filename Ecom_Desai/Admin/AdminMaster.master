@@ -59,7 +59,7 @@
             <nav class="navbar-color">
                 <div class="nav-wrapper">
                     <ul class="left">                      
-                      <li><h1 class="logo-wrapper"><a href="DisplayCategory.aspx" class="brand-logo darken-1">XQ-FOTOS<%--<img src="images/materialize-logo.png" alt="materialize logo">--%></a> <span class="logo-text">XQ-Fotos</span></h1></li>
+                      <li><h1 class="logo-wrapper"><a href="DisplayCategory.aspx" class="brand-logo darken-1">Desai<%--<img src="images/materialize-logo.png" alt="materialize logo">--%></a> <span class="logo-text">XQ-Fotos</span></h1></li>
                     </ul>
                   
                     <!-- translation-button -->
@@ -177,17 +177,17 @@
     
        
     <!-- chartist -->
-    <%--<script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script> --%>  
+    <script type="text/javascript" src="js/plugins/chartist-js/chartist.min.js"></script>   
 
     <!-- chartjs -->
-    <%--<script type="text/javascript" src="js/plugins/chartjs/chart.min.js"></script>
-    <script type="text/javascript" src="js/plugins/chartjs/chart-script.js"></script>--%>
+    <script type="text/javascript" src="js/plugins/chartjs/chart.min.js"></script>
+    <script type="text/javascript" src="js/plugins/chartjs/chart-script.js"></script>
 
     <!-- sparkline -->
     <script type="text/javascript" src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
         <script src="js/jquery.simplePagination.js"></script>
     <script type="text/javascript" src="js/plugins/sparkline/sparkline-script.js"></script>
- <%--       <script type="text/javascript" src="js/plugins.min.js"></script>--%>
+        <script type="text/javascript" src="js/plugins.min.js"></script>
     <!-- google map api -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAZnaZBXLqNBRXjd-82km_NO7GUItyKek"></script>
 
