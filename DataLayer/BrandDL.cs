@@ -12,7 +12,7 @@ namespace DataLayer
 {
     public class BrandDL
     {
-        string dbConnection = @"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123";
+        string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
 
         #region GetAllBrands
         public List<BrandOL> GetAllBrands()
@@ -20,7 +20,7 @@ namespace DataLayer
             using (IDbConnection db = new SqlConnection(dbConnection))
             {
                 return db.Query<BrandOL>
-                ("Select * From Brands Where IsDeleted=0").ToList();
+                ("Select * From Brands Where IsDeleted=0 or IsDeleted='False' ").ToList();
             }
         }
         #endregion
