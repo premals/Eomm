@@ -70,4 +70,13 @@ public class Brands : System.Web.Services.WebService
     }
     #endregion
 
+    #region Add
+    [WebMethod]
+    public int Add(string Name)
+    {
+        int rowAffect = new BrandBL().Add(Name);
+        return rowAffect;
+    }
+    #endregion
+
 }

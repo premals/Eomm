@@ -43,5 +43,13 @@ namespace BuissnessLayer
             return rowsAffected;
         }
         #endregion
+
+        #region Add
+        public int Add(string name)
+        {
+            int rowsAffected = new BrandDL().Add(name);
+            return rowsAffected;
+        }
+        #endregion
     }
 }

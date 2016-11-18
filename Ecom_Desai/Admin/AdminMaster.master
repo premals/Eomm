@@ -109,7 +109,7 @@
              
                 <li class="no-padding">
                     <ul class="collapsible collapsible-accordion">
-                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan" href="Category.aspx"><i class="mdi-action-view-carousel"></i> Add Category</a>
+                        <li class="bold"><a class="collapsible-header waves-effect waves-cyan" href="../Admin/Brands.aspx"><i class="mdi-action-view-carousel"></i> Brands </a>
                             
                         </li>
                     </ul>

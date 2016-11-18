@@ -7,13 +7,14 @@ using Dapper;
 using Entity;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace DataLayer
 {
     public class BrandDL
     {
-        string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
-
+        //string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
+        string dbConnection = @"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123";
         #region GetAllBrands
         public List<BrandOL> GetAllBrands()
         {
@@ -45,7 +46,7 @@ namespace DataLayer
             brandol.ModifiedDate = DateTime.UtcNow.AddHours(5.5);
             using (IDbConnection db = new SqlConnection(dbConnection))
             {
-                string sqlQuery = "UPDATE Brands SET Name = '"+name+ "' LastModifiedBy=1 WHERE Id = " + id;
+                string sqlQuery = "UPDATE Brands SET Name = '"+name+ "', LastModifiedBy=1 WHERE Id = " + id;
                 int rowsAffected = db.Execute(sqlQuery, brandol);
                 return rowsAffected;
             }
@@ -62,6 +63,22 @@ namespace DataLayer
             using (IDbConnection db = new SqlConnection(dbConnection))
             {
                 string sqlQuery = "UPDATE Brands SET IsDeleted = 1 , LastModifiedBy=1 WHERE Id = " + id;
+                int rowsAffected = db.Execute(sqlQuery, brandol);
+                return rowsAffected;
+            }
+        }
+        #endregion
+
+        #region Add
+        public int Add(string name)
+        {
+            BrandOL brandol = new BrandOL();
+            brandol.Name = name;
+            brandol.CreatedBy = 1;
+            brandol.CreatedDate = DateTime.UtcNow.AddHours(5.5);
+            using (IDbConnection db = new SqlConnection(dbConnection))
+            {
+                string sqlQuery = "INSERT INTO Brands (Name,CreatedBy,CreatedDate,IsDeleted) VALUES ('" + name + "',1," + brandol.CreatedDate.ToString("dd/MM/yyyy")+",0)";
                 int rowsAffected = db.Execute(sqlQuery, brandol);
                 return rowsAffected;
             }

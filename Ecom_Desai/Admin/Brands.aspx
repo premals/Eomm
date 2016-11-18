@@ -36,6 +36,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="col-md-12">
+        <button type="button" class="btn btn-info btn-lg" style="float:right" id="addnew">Add New</button>
         <table id="brandtable" style="margin-left: 130px; margin-top: 20px;">
         </table>
     </div>
@@ -133,21 +134,40 @@
             var name = $("#Name").val();
             var id = $("#Id").val();
             var xmlRequest = [];
-            xmlRequest.push($.ajax(
-                 {
-                     type: "POST",
-                     url: GlobalPath + "Brands.asmx/Edit",
-                     contentType: "application/json; charset=utf-8",
-                     dataType: "json",
-                     data: JSON.stringify({ Name: name, Id: id }),
-                     async: true,
-                     cache: false,
-                     success: onsuccessSave,
-                     error: function (xhr, ajaxOptions, thrownError) {
-                         //alert(xhr.responseText + "error");
-                         //alert(thrownError);
-                     }
-                 }));
+            if (id != "0") {
+                xmlRequest.push($.ajax(
+                     {
+                         type: "POST",
+                         url: GlobalPath + "Brands.asmx/Edit",
+                         contentType: "application/json; charset=utf-8",
+                         dataType: "json",
+                         data: JSON.stringify({ Name: name, Id: id }),
+                         async: true,
+                         cache: false,
+                         success: onsuccessSave,
+                         error: function (xhr, ajaxOptions, thrownError) {
+                             //alert(xhr.responseText + "error");
+                             //alert(thrownError);
+                         }
+                     }));
+            }
+            else {
+                xmlRequest.push($.ajax(
+                    {
+                        type: "POST",
+                        url: GlobalPath + "Brands.asmx/Add",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: JSON.stringify({ Name: name}),
+                        async: true,
+                        cache: false,
+                        success: onsuccessSave,
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            //alert(xhr.responseText + "error");
+                            //alert(thrownError);
+                        }
+                    }));
+            }
         })
         function onsuccessSave(data) {
             $('#BrandModal').modal('hide');
@@ -178,6 +198,11 @@
             $('#BrandModal').modal('hide');
             GetAllBrands();
         }
+        $("#addnew").click(function () {
+            $("#Name").val('');
+            $("#Id").val(0);
+            $('#BrandModal').modal('show');
+        })
     </script>
 </asp:Content>
 
