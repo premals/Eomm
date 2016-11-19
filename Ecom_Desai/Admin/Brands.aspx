@@ -32,12 +32,39 @@
         body{
             overflow:hidden!important;
         }
+
+        #addnew{
+            background-color:none!important;
+            border-color:#46b8da!important;
+            border-radius:8%;
+                margin-top: 2%;
+
+        }
+        #addnew:hover{
+            background-color:#46b8da!important;
+            border-radius:8%;
+            border-color:#46b8da!important;
+            color:#fff;
+        }
+
+        th, td {
+    border-bottom: 1px solid #ddd;
+
+}
+        th{
+            font-weight:600;
+        }
+
+        td{
+            padding: 8px 8px!important;
+        }
+
         </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="col-md-12">
-        <button type="button" class="btn btn-info btn-lg" style="float:right" id="addnew">Add New</button>
-        <table id="brandtable" style="margin-left: 130px; margin-top: 20px;">
+        <button type="button" class="btn btn-default" style="float:right" id="addnew">Add New (+)</button>
+        <table id="brandtable" style="margin-left: 130px; margin-top: 80px;width:70%!important" class="w3-table w3-striped"">
         </table>
     </div>
     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" id="brandmodalbutton" style="visibility: hidden" data-target="#myModal">Open Modal</button>
@@ -92,9 +119,9 @@
             // alert(data.d.length + "" + data.d[0].Name);
             $("#brandtable").empty();
             if (data.d.length > 0) {
-                $("#brandtable").append("<thead><tr><td>Name</td><td>Edit</td><td>Delete</td></tr></thead>");
+                $("#brandtable").append("<thead><tr><th>Name</th><th>Edit</th><th>Delete</th></tr></thead>");
                 (data.d).forEach(function (i) {
-                    $("#brandtable").append("<tbody><tr><td>" + i.Name + "</td><td><img src='images/edit_Icon.png' id='brand_" + i.Id + "' onclick='EditBrand(this)' style='width:30px;'/></td><td><img src='images/1479430915_delete.png' onclick='DeleteBrand(" + i.Id + ")' style='width:30px'/></td></tr></tbody>");
+                    $("#brandtable").append("<tbody><tr><td>" + i.Name + "</td><td><img src='images/edit_Icon.png' id='brand_" + i.Id + "' onclick='EditBrand(this)' style='width:25px;'/></td><td><img src='images/1479430915_delete.png' onclick='DeleteBrand(" + i.Id + ")' style='width:25px'/></td></tr></tbody>");
                 });
             }
             else {

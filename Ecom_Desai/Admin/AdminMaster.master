@@ -199,7 +199,7 @@
                 <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
          <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
     <!--materialize js-->
-         <%-- <script type="text/javascript" src="js/plugins.min.js"></script>--%>
+          <script type="text/javascript" src="js/plugins.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
   
     <!--prism-->
