@@ -2,7 +2,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script type="text/javascript">
+        $(document).ready(function () {
+            $("#loder").hide();
+        })
         function UpdateContent() {
+            $("#loder").show();
             var GlobalPath = "<%= Application["path"] %>";
             var cont = CKEDITOR.instances.ck.getData();
             var id = $('#ddlselect :selected').val();
@@ -47,7 +51,8 @@
         function OnSuccess1(data) {
             debugger;
             var result = data.d[0];
-            if (result !="") {
+            if (result != "") {
+                $("#loder").hide();
                 $("#lblmsg").append("Content is Updated Successfully");
                 setTimeout(function () { document.getElementById("lblmsg").innerText = ""; }, 5000);
                
@@ -121,6 +126,9 @@
                            
                           </div>
                         </div>
+                          <div id="loder">
+                              <img src="images/loader2.gif" />
+                          </div>
                           <div class="row" style=";margin-top:2%">
                                  <span id="lblmsg" style="color:green;margin-left:4%"></span>
                           </div>
