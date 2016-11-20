@@ -10,7 +10,7 @@ namespace Entity
     {
         public int ContentId { get; set; }
         public string Name { get; set; }
-        public string content { get; set; }
+        public string Content_Desc { get; set; }
         public bool IsDeleted { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }

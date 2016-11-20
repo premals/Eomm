@@ -64,12 +64,41 @@
       <script type="text/javascript">
         function validate() {
             categoryId = $("#ddlselect").val();
+            var GlobalPath = "<%= Application["path"] %>";
             if (categoryId == "0") {
                 $("#selectpage").text("");
                 $("#selectpage").append("please Select Category")
             }
             else {
                 $("#selectpage").text("");
+                var xmlRequest = [];
+                xmlRequest.push($.ajax(
+                      {
+                          type: "POST",
+                          url: GlobalPath + "ContentUpdate.asmx/GetContent",
+                          contentType: "application/json; charset=utf-8",
+                          data: JSON.stringify(
+                          {
+                              Id: categoryId
+                          }
+                          ),
+                          dataType: "json",
+                          async: true,
+                          cache: false,
+                          success: OnSuccessGetContent,
+                          error: function (xhr, ajaxOptions, thrownError) {
+                              //alert(xhr.responseText + "error");
+                              //alert(thrownError);
+                          }
+                      }));
+            }
+        }
+
+        function OnSuccessGetContent(data) {
+            debugger;
+            var result = data.d[0].Content_Desc;
+            if (result != "") {
+                CKEDITOR.instances.ck.setData(result);
             }
         }
       

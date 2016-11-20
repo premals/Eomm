@@ -14,7 +14,7 @@ namespace DataLayer
     public class BrandDL
     {
         //string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
-        string dbConnection = @"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123";
+        string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
         #region GetAllBrands
         public List<BrandOL> GetAllBrands()
         {

@@ -18,7 +18,7 @@ namespace DataLayer
             try
             {
                 ContentOl objContentOl = new ContentOl();
-                objContentOl.content = content;
+                objContentOl.Content_Desc = content;
                 objContentOl.ModifiedDate = DateTime.UtcNow.AddHours(5.5);
                 using (IDbConnection db = new SqlConnection(dbConnection))
                 {
@@ -33,6 +33,28 @@ namespace DataLayer
                 throw ex;
             }
 
+        }
+
+        public List<ContentOl> GetContent(string id)
+        {
+            try
+            {
+                string content = string.Empty;
+                ContentOl objContentOl = new ContentOl();
+                using (IDbConnection db = new SqlConnection(dbConnection))
+                {
+                    //var conten= db.Query("Select Content_Desc From Content_Master Where ContentId='"+id+"'").First();
+                    // content = Convert.ToString(conten);
+                    // return conten;
+                    return db.Query<ContentOl>("Select * From Content_Master Where ContentId='" + id + "'").ToList();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

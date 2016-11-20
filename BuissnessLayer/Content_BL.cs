@@ -17,6 +17,12 @@ namespace BuissnessLayer
             int rowsAffected = new ContentDL().SaveContent(content,id);
             return rowsAffected;
         }
+
+        public List<ContentOl> GetContent(string id)
+        {
+            List<ContentOl> content = new ContentDL().GetContent(id);
+            return content.ToList();
+        }
         #endregion
     }
 }
