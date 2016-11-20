@@ -43,9 +43,6 @@ namespace DataLayer
                 ContentOl objContentOl = new ContentOl();
                 using (IDbConnection db = new SqlConnection(dbConnection))
                 {
-                    //var conten= db.Query("Select Content_Desc From Content_Master Where ContentId='"+id+"'").First();
-                    // content = Convert.ToString(conten);
-                    // return conten;
                     return db.Query<ContentOl>("Select * From Content_Master Where ContentId='" + id + "'").ToList();
 
                 }
