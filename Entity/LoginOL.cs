@@ -44,6 +44,19 @@ namespace Entity
             }
         }
         private int m_UsetId;
+
+        public string CreatedBy
+        {
+            get
+            {
+                return m_CreatedBy;
+            }
+            set
+            {
+                m_CreatedBy = value;
+            }
+        }
+        private string m_CreatedBy;
     }
 
 }
