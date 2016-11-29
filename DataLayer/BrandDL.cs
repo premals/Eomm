@@ -14,7 +14,7 @@ namespace DataLayer
     public class BrandDL
     {
         //string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
-        string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
+        string dbConnection = @"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123";
         #region GetAllBrands
         public List<BrandOL> GetAllBrands()
         {
@@ -37,16 +37,17 @@ namespace DataLayer
         #endregion
 
         #region Edit
-        public int Edit(int id,string name)
+        public int Edit(int id, string name, string image)
         {
             BrandOL brandol = new BrandOL();
             brandol.Name = name;
             brandol.Id = id;
+            brandol.Image = image;
             brandol.ModifiedBy = 1;
             brandol.ModifiedDate = DateTime.UtcNow.AddHours(5.5);
             using (IDbConnection db = new SqlConnection(dbConnection))
             {
-                string sqlQuery = "UPDATE Brands SET Name = '"+name+ "', LastModifiedBy=1 WHERE Id = " + id;
+                string sqlQuery = "UPDATE Brands SET Name = '" + name + "', LastModifiedBy=1 WHERE Id = " + id;
                 int rowsAffected = db.Execute(sqlQuery, brandol);
                 return rowsAffected;
             }
@@ -70,15 +71,16 @@ namespace DataLayer
         #endregion
 
         #region Add
-        public int Add(string name)
+        public int Add(string name, string Image)
         {
             BrandOL brandol = new BrandOL();
             brandol.Name = name;
+            brandol.Image = Image;
             brandol.CreatedBy = 1;
             brandol.CreatedDate = DateTime.UtcNow.AddHours(5.5);
             using (IDbConnection db = new SqlConnection(dbConnection))
             {
-                string sqlQuery = "INSERT INTO Brands (Name,CreatedBy,CreatedDate,IsDeleted) VALUES ('" + name + "',1," + brandol.CreatedDate.ToString("dd/MM/yyyy")+",0)";
+                string sqlQuery = "INSERT INTO Brands (Name,Image,CreatedBy,CreatedDate,IsDeleted) VALUES ('" + name + "','" + Image + "',1," + brandol.CreatedDate.ToString("dd/MM/yyyy") + ",0)";
                 int rowsAffected = db.Execute(sqlQuery, brandol);
                 return rowsAffected;
             }

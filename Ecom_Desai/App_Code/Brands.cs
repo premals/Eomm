@@ -40,22 +40,27 @@ public class Brands : System.Web.Services.WebService
     #endregion
 
     #region GetById
-    [WebMethod]
+    [WebMethod(EnableSession = true)]
     public BrandOL GetById(string id)
     {
         int Id = Convert.ToInt32(id);
         BrandOL objbrand = new BrandOL();
         objbrand = new BrandBL().GetById(Id);
+        HttpContext.Current.Session["Image"] = objbrand.Image;
         return objbrand;
     }
     #endregion
 
     #region Edit
-    [WebMethod]
-    public int Edit(string Name,string Id)
+    [WebMethod(EnableSession = true)]
+    public int Edit(string Name, string Id, string Image)
     {
         int id = Convert.ToInt32(Id);
-        int rowAffect = new BrandBL().Edit(id, Name);
+        if (Image == "" || Image == null)
+        {
+            Image = HttpContext.Current.Session["Image"].ToString();
+        }
+        int rowAffect = new BrandBL().Edit(id, Name, Image);
         return rowAffect;
     }
     #endregion
@@ -72,9 +77,9 @@ public class Brands : System.Web.Services.WebService
 
     #region Add
     [WebMethod]
-    public int Add(string Name)
+    public int Add(string Name, string Image)
     {
-        int rowAffect = new BrandBL().Add(Name);
+        int rowAffect = new BrandBL().Add(Name, Image);
         return rowAffect;
     }
     #endregion

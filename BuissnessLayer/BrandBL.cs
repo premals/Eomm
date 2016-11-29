@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLayer;
 using Entity;
+using System.Web;
 
 namespace BuissnessLayer
 {
@@ -29,9 +30,9 @@ namespace BuissnessLayer
         #endregion
 
         #region Edit
-        public int Edit(int id,string name)
+        public int Edit(int id, string name, string image)
         {
-            int rowsAffected = new BrandDL().Edit(id, name);
+            int rowsAffected = new BrandDL().Edit(id, name, image);
             return rowsAffected;
         }
         #endregion
@@ -45,9 +46,9 @@ namespace BuissnessLayer
         #endregion
 
         #region Add
-        public int Add(string name)
+        public int Add(string name, string Image)
         {
-            int rowsAffected = new BrandDL().Add(name);
+            int rowsAffected = new BrandDL().Add(name, Image);
             return rowsAffected;
         }
         #endregion

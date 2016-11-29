@@ -10,6 +10,7 @@ namespace Entity
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Image { get; set; }
         public bool IsDeleted { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedDate { get; set; }

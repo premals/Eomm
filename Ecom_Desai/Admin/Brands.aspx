@@ -3,63 +3,65 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style>
         .modal {
-            max-height:280px!important;
+            max-height: 280px !important;
         }
+
         input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #9e9e9e;
-    border-radius: 0;
-    outline: none;
-    height: 3rem;
-    width: 100%;
-    font-size: 1em!important;
-    margin: 0 0 15px 0;
-    padding: 0;
-    box-shadow: none;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    transition: all .3s;
-}
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #9e9e9e;
+            border-radius: 0;
+            outline: none;
+            height: 3rem;
+            width: 100%;
+            font-size: 1em !important;
+            margin: 0 0 15px 0;
+            padding: 0;
+            box-shadow: none;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            transition: all .3s;
+        }
+
         .modal .modal-footer {
-    border-radius: 0 0 2px 2px;
-    background-color: #fafafa;
-    padding: 29px 6px!important;
-    /* height: 52px; */
-    width: 100%;
-}
-        body{
-            overflow:hidden!important;
+            border-radius: 0 0 2px 2px;
+            background-color: #fafafa;
+            padding: 29px 6px !important;
+            /* height: 52px; */
+            width: 100%;
         }
 
-        #addnew{
-            background-color:none!important;
-            border-color:#46b8da!important;
-            border-radius:8%;
-                margin-top: 2%;
+        body {
+            overflow: hidden !important;
+        }
 
+        #addnew {
+            background-color: none !important;
+            border-color: #46b8da !important;
+            border-radius: 8%;
+            margin-top: 2%;
         }
-        #addnew:hover{
-            background-color:#46b8da!important;
-            border-radius:8%;
-            border-color:#46b8da!important;
-            color:#fff;
-        }
+
+            #addnew:hover {
+                background-color: #46b8da !important;
+                border-radius: 8%;
+                border-color: #46b8da !important;
+                color: #fff;
+            }
 
         th, td {
-    border-bottom: 1px solid #ddd;
-
-}
-        th{
-            font-weight:600;
+            border-bottom: 1px solid #ddd;
         }
 
-        td{
-            padding: 8px 8px!important;
+        th {
+            font-weight: 600;
         }
 
-        </style>
+        td {
+            padding: 8px 8px !important;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="col-md-12">
@@ -79,12 +81,18 @@
             <div class="row margin">
                 <input type="hidden" id="Id" />
                 <input type="text" class="input-field col s12" id="Name" />
+                 <span id="namevalidation" style="color:red"></span>
+            </div>
+            <br />
+            <div class="row margin">
+                <input id="File1" type="file" class="attach-file"/>
+                <span id="filevalidation" style="color:red"></span>
             </div>
             <input type="button" value="Save" id="save" class="btn btn-default" />
         </div>
-        <div class="modal-footer">
+       <%-- <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
+        </div>--%>
         <%-- </div>--%>
     </div>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -149,8 +157,7 @@
                   }));
         }
         function onsuccessEdit(data) {
-            // debugger;
-            // alert(data.d.Name);
+
             if (data.d.Name != null) {
                 $("#Name").val(data.d.Name);
                 $("#Id").val(data.d.Id);
@@ -158,48 +165,111 @@
             }
         }
         $("#save").click(function () {
+            debugger;
             var name = $("#Name").val();
             var id = $("#Id").val();
-            var xmlRequest = [];
-            if (id != "0") {
-                xmlRequest.push($.ajax(
-                     {
-                         type: "POST",
-                         url: GlobalPath + "Brands.asmx/Edit",
-                         contentType: "application/json; charset=utf-8",
-                         dataType: "json",
-                         data: JSON.stringify({ Name: name, Id: id }),
-                         async: true,
-                         cache: false,
-                         success: onsuccessSave,
-                         error: function (xhr, ajaxOptions, thrownError) {
-                             //alert(xhr.responseText + "error");
-                             //alert(thrownError);
-                         }
-                     }));
+            <%--if (id != "0")
+            {
+                $('input[type=file]')[0].files[0] = <%= Session["Image"].ToString()%>;
+            }--%>
+            if (name == "" || name == undefined) {
+
+                $("#namevalidation").text('Please Enter Name');
+                return false;
             }
             else {
-                xmlRequest.push($.ajax(
-                    {
-                        type: "POST",
-                        url: GlobalPath + "Brands.asmx/Add",
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        data: JSON.stringify({ Name: name}),
-                        async: true,
-                        cache: false,
-                        success: onsuccessSave,
-                        error: function (xhr, ajaxOptions, thrownError) {
-                            //alert(xhr.responseText + "error");
-                            //alert(thrownError);
-                        }
-                    }));
+                $("#namevalidation").text('');
+            }
+            if (id == "0") {
+
+                if ($('input[type=file]')[0].files[0] == undefined) {
+                    $("#filevalidation").append('Please Select File.');
+                    return false;
+                }
+                else {
+                    $("#filevalidation").text('');
+                }
+            }
+
+            if (name != "") {//&& $('input[type=file]')[0].files[0] != undefined && id != "0"
+                var imgname = null;
+                if ($('input[type=file]')[0].files[0] != undefined) {
+                    imgname = $('input[type=file]')[0].files[0].name;
+                    var ext = $('#File1').val().split('.').pop().toLowerCase();
+                    if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                        $("#filevalidation").append('invalid extension!');
+                        return false;
+                    }
+                }
+                $("#namevalidation").text('');
+                $("#filevalidation").text('');
+                var xmlRequest = [];
+                if (id != "0") {
+                    xmlRequest.push($.ajax(
+                         {
+                             type: "POST",
+                             url: GlobalPath + "Brands.asmx/Edit",
+                             contentType: "application/json; charset=utf-8",
+                             dataType: "json",
+                             data: JSON.stringify({ Name: name, Id: id, Image: imgname }),
+                             async: true,
+                             cache: false,
+                             success: onsuccessSave,
+                             error: function (xhr, ajaxOptions, thrownError) {
+                                 //alert(xhr.responseText + "error");
+                                 //alert(thrownError);
+                             }
+                         }));
+                }
+                else {
+                    xmlRequest.push($.ajax(
+                        {
+                            type: "POST",
+                            url: GlobalPath + "Brands.asmx/Add",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            data: JSON.stringify({ Name: name, Image: imgname }),
+                            async: true,
+                            cache: false,
+                            success: onsuccessSave,
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                //alert(xhr.responseText + "error");
+                                //alert(thrownError);
+                            }
+                        }));
+                }
             }
         })
         function onsuccessSave(data) {
             $('#BrandModal').modal('hide');
+            upload_Brand(data.d[0]);
             GetAllBrands();
         }
+
+        function upload_Brand(result) {
+            debugger;
+            var fileUpload = $("#File1").get(0);
+            var files = fileUpload.files;
+            var test = new FormData();
+            for (var i = 0; i < files.length; i++) {
+                test.append(files[i].name, files[i]);
+            }
+            $.ajax({
+                url: GlobalPath + "BrandImage.ashx",
+                type: "POST",
+                contentType: false,
+                processData: false,
+                data: test,
+                success: function (result) {
+                    alert(result);
+                    $("#File1").val("");
+                },
+                error: function (err) {
+                    alert(err.statusText);
+                }
+            });
+        }
+
         function DeleteBrand(e) {
             var brandid = e;
             var xmlRequest = [];
