@@ -13,8 +13,8 @@ namespace DataLayer
 {
     public class BrandDL
     {
-        //string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
-        string dbConnection = @"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123";
+        string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
+        //string dbConnection = @"Data Source=HP\SQLEXPRESS;Initial Catalog=DesaiEcom;Connection Timeout=180;User ID=sa;Password=sa@123";
         #region GetAllBrands
         public List<BrandOL> GetAllBrands()
         {
@@ -42,12 +42,12 @@ namespace DataLayer
             BrandOL brandol = new BrandOL();
             brandol.Name = name;
             brandol.Id = id;
-            brandol.Image = image;
+            brandol.Image = id+"_"+image;
             brandol.ModifiedBy = 1;
             brandol.ModifiedDate = DateTime.UtcNow.AddHours(5.5);
             using (IDbConnection db = new SqlConnection(dbConnection))
             {
-                string sqlQuery = "UPDATE Brands SET Name = '" + name + "', LastModifiedBy=1 WHERE Id = " + id;
+                string sqlQuery = "UPDATE Brands SET Name = '" + name + "',Image='"+brandol.Image+"' ,LastModifiedBy=1 WHERE Id = " + id;
                 int rowsAffected = db.Execute(sqlQuery, brandol);
                 return rowsAffected;
             }

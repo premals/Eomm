@@ -88,7 +88,7 @@
                 <input id="File1" type="file" class="attach-file"/>
                 <span id="filevalidation" style="color:red"></span>
             </div>
-            <input type="button" value="Save" id="save" class="btn btn-default" />
+            <input type="button" value="Save" id="save" class="btn btn-default" style="margin-top:18px!important" />
         </div>
        <%-- <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -241,8 +241,9 @@
             }
         })
         function onsuccessSave(data) {
+            debugger;
             $('#BrandModal').modal('hide');
-            upload_Brand(data.d[0]);
+            upload_Brand(data.d);
             GetAllBrands();
         }
 
@@ -252,8 +253,9 @@
             var files = fileUpload.files;
             var test = new FormData();
             for (var i = 0; i < files.length; i++) {
-                test.append(files[i].name, files[i]);
+                test.append(files[i].name + "_" +result, files[i]);
             }
+           
             $.ajax({
                 url: GlobalPath + "BrandImage.ashx",
                 type: "POST",
