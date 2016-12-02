@@ -114,7 +114,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="bold"><a href="ContentUpdate.aspx" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Content Update <%--<span class="new badge">4</span>--%></a>
+                <li class="bold"><a href="../Admin/Products.aspx" class="waves-effect waves-cyan"><i class="mdi-communication-email"></i> Products <%--<span class="new badge">4</span>--%></a>
                 </li>
                
                 <li class="no-padding">

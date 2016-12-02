@@ -7,12 +7,13 @@ using Entity;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
+using System.Configuration;
 
 namespace DataLayer
 {
     public class ContentDL
     {
-        string dbConnection = @"Data Source=PREMAL;Initial Catalog=DesaiEcom;Integrated Security=True";
+        string dbConnection=ConfigurationManager.ConnectionStrings["strConnection"].ConnectionString;
         public int SaveContent(string content, string id)
         {
             try
