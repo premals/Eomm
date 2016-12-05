@@ -31,11 +31,17 @@ public class ContentUpdate : System.Web.Services.WebService
 
     [WebMethod]
 
-    public int InsertContent(string Content,string Id)
+    public int InsertContent(string Content, string Id)
     {
         int id = Convert.ToInt32(Id);
-        int rowAffect = new Content_BL().SaveContent(Content,Id);
+        int rowAffect = new Content_BL().SaveContent(Content, Id);
         return rowAffect;
+    }
+    [WebMethod]
+    public List<ContentOl> GetContent(string Id)
+    {
+        List<ContentOl> content= new Content_BL().GetContent(Id);
+        return content;
     }
 
 }

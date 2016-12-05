@@ -33,7 +33,7 @@ namespace BuissnessLayer
         public int Edit(int id, string name, string image)
         {
             int rowsAffected = new BrandDL().Edit(id, name, image);
-            return rowsAffected;
+            return id;
         }
         #endregion
 

@@ -26,19 +26,21 @@ public class BrandImage : IHttpHandler {
                     if (HttpContext.Current.Request.Browser.Browser.ToUpper() == "IE" || HttpContext.Current.Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
                     {
                         string[] testfiles = file.FileName.Split(new char[] { '\\' });
-                        fname = testfiles[testfiles.Length - 1];
+                        fname += testfiles[testfiles.Length - 1];
                         
                     }
                     else
                     {
-                        id = fname.LastIndexOf("_").ToString();
+                        id =context.Request.Params["datTxt"];
+                        string[] testfiles = file.FileName.Split(new char[] { '\\' });
+                        fname += testfiles[testfiles.Length - 1];
                         if (id != "")
                         {
-                             fname = id + '_' + (file.FileName).Replace("-","");
+                             fname += id + '_' + (file.FileName).Replace("-","");
                         }
                         else
                         {
-                            fname = dt.Rows[0]["ID"].ToString() + '_' + (file.FileName);
+                            fname += dt.Rows[0]["ID"].ToString() + '_' + (file.FileName);
                         }
                         
                     }

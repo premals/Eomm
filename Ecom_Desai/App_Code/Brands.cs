@@ -61,7 +61,7 @@ public class Brands : System.Web.Services.WebService
             Image = HttpContext.Current.Session["Image"].ToString();
         }
         int rowAffect = new BrandBL().Edit(id, Name, Image);
-        return rowAffect;
+        return id;
     }
     #endregion
 

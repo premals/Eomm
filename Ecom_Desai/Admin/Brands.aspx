@@ -253,11 +253,13 @@
             var files = fileUpload.files;
             var test = new FormData();
             for (var i = 0; i < files.length; i++) {
-                test.append(files[i].name + "_" +result, files[i]);
+                test.append(files[i].name , files[i]);
             }
+
+            var url = "BrandImage.ashx?datTxt="+result
            
             $.ajax({
-                url: GlobalPath + "BrandImage.ashx",
+                url: GlobalPath + url,
                 type: "POST",
                 contentType: false,
                 processData: false,

@@ -101,7 +101,7 @@
                             <li><asp:LinkButton ID="lnklogout" runat="server"><i class="mdi-hardware-keyboard-tab"></i>Logout</asp:LinkButton>
                             </li>
                         </ul>
-                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Tejas<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                        <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">Desai<i class="mdi-navigation-arrow-drop-down right"></i></a>
                         <p class="user-roal">Administrator</p>
                     </div>
                 </div>

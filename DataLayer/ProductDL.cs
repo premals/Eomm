@@ -15,11 +15,19 @@ namespace DataLayer
         #region GetAllProducts
         public List<ProductOL> GetAllProducts()
         {
-            using (IDbConnection db = new SqlConnection(dbConnection))
+            try
             {
-                return db.Query<ProductOL>
-                ("Select * From Products Where IsDeleted=0 or IsDeleted='False' ").ToList();
+                using (IDbConnection db = new SqlConnection(dbConnection))
+                {
+                    return db.Query<ProductOL>
+                    ("Select * From Products Where IsDeleted=0 or IsDeleted='False' ").ToList();
+                }
             }
+            catch(SqlException se)
+            {
+                throw se;
+            }
+
         }
         #endregion
 
