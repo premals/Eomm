@@ -61,9 +61,18 @@
         td {
             padding: 8px 8px !important;
         }
+        .select-wrapper input.select-dropdown {
+            display:none!important;
+        }
+        .caret{
+            display:none!important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <script id="itemtem" type="text/html">
+         <option value="${Id}">${Name}</option>
+    </script>
      <div class="col-md-12">
         <button type="button" class="btn btn-default" style="float:right" id="addnew">Add New (+)</button>
         <table id="producttable" style="margin-left: 130px; margin-top: 80px;width:70%!important" class="w3-table w3-striped"">
@@ -79,20 +88,22 @@
         <div class="modal-body">
             <div class="row margin">
                 <input type="hidden" id="Id" />
-                <input type="text" class="input-field col s12" id="Name" />
+                <input type="text"  id="Name" />
                  <span id="namevalidation" style="color:red"></span>
             </div>
             <br />
             <div class="row margin">
-                <select class="input-field col s12" id="branddropdown"></select>
-                 <span id="ddlbrand" style="color:red"></span>
+                <div class="input-field col s12">
+                    <select id="dvItems" class="select-dropdown"></select>
+                    <span id="ddlbrand" style="color:red"></span>
+                    </div>
             </div>
             <br />
             <div class="row margin">
                 <input id="File1" type="file" class="attach-file"/>
                 <span id="filevalidation" style="color:red"></span>
             </div>
-            <input type="button" value="Save" id="save" class="btn btn-default" />
+            <input type="button" value="Save" id="save" onclick="validate();" class="btn btn-default" />
         </div>
     </div>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -103,6 +114,7 @@
         $(document).ready(function () {
             $("#producttable").empty();
             GetAllProducts();
+            GetAllBrands();
         });
         function GetAllProducts() {
             var xmlRequest = [];
@@ -133,10 +145,34 @@
                 $("#producttable").append("<tr><td>No record found.</td></tr>");
             }
         }
+        function GetAllBrands() {
+            var xmlRequest = [];
+            xmlRequest.push($.ajax(
+                 {
+                     type: "POST",
+                     url: GlobalPath + "Brands.asmx/GetAllBrands",
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     async: true,
+                     cache: false,
+                     success: OnSuccess1,
+                     error: function (xhr, ajaxOptions, thrownError) {
+                         //alert(xhr.responseText + "error");
+                         //alert(thrownError);
+                     }
+                 }));
+        }
+        function OnSuccess1(data) {
+            $("#dvItems").empty();
+            $("#dvItems").show();
+            $("#dvItems").append($("#itemtem").tmpl(data.d));
+            $("#dvItems  option:first").before("<option value='0' selected>--Select--</option>")
+        }
+
         function DeleteProduct(e) {
             var productid = e;
             var xmlRequest = [];
-            if (confirm("Are You sure Delete Category!") == true) {
+            if (confirm("Are You sure Delete Product!") == true) {
                 xmlRequest.push($.ajax(
                     {
                         type: "POST",
@@ -163,6 +199,38 @@
             $("#Id").val(0);
             $('#ProductModal').modal('show');
         })
+        function validate() {
+            categoryId = $("#dvItems").val();
+            if (categoryId == "0") {
+                $("#ddlbrand").append("");
+                $("#ddlbrand").append("Please Select Brand");
+            }
+            else {
+                $("#ddlbrand").text("");
+                brandId = $("#dvItems").val();
+                var xmlRequest = [];
+                var pn = 0;
+                xmlRequest.push($.ajax(
+                 {
+                     type: "POST",
+                     url: GlobalPath + "Product.asmx/SaveProduct",
+                     contentType: "application/json; charset=utf-8",
+                     data: JSON.stringify(
+                     {
+                         Cat: categoryId
+                     }
+                     ),
+                     dataType: "json",
+                     async: true,
+                     cache: false,
+                     success: OnSuccessSaveProduct,
+                     error: function (xhr, ajaxOptions, thrownError) {
+                         //alert(xhr.responseText + "error");
+                         //alert(thrownError);
+                     }
+                 }));
+            }
+        }
     </script>
 </asp:Content>
 
